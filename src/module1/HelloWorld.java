@@ -10,9 +10,12 @@ public class HelloWorld {
 		String name = in.nextLine();
 		System.out.print("Из какого города? ");
 		String city = in.nextLine();
+		Address address = new Address(city);
 		in.close();
-		ImmutableHello iHello = new ImmutableHello(name, city);
-		System.out.println(iHello.toString());		
+		ImmutableHello iHello = new ImmutableHello(name, address);
+		Address newAddress = iHello.getAddress();
+		newAddress.setCity("Moscow");
+		System.out.println(iHello);
 	}
 
 }

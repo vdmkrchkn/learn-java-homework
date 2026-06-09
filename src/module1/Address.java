@@ -1,9 +1,9 @@
 package module1;
 
-public class Adress {
+public class Address {
 	private String city;
 	
-	public Adress(String city) {
+	public Address(String city) {
 		this.city = city;
 	}
 	

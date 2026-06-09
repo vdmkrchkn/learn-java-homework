@@ -2,23 +2,23 @@ package module1;
 
 public final class ImmutableHello {
 	private final String name;
-	private final Adress adress;
+	private final Address address;
 	
-	public ImmutableHello(String name, String adress) {
+	public ImmutableHello(String name, Address address) {
 		this.name = name;
-		this.adress = new Adress(adress);
+		this.address = new Address(address.getCity());
 	}
 	
 	String getName() {
 		return name;
 	}
 	
-	String getAdress() {
-		return this.adress.getCity();
+	Address getAddress() {
+		return new Address(address.getCity());
 	}
 
 	@Override
 	public String toString() {
-		return "Hello, " + getName() + " from " + getAdress() + "!";
+		return "Hello, " + getName() + " from " + address.getCity() + "!";
 	}
 }
