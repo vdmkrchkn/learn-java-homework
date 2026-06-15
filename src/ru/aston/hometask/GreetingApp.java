@@ -1,8 +1,8 @@
-package module1;
+package ru.aston.hometask;
 
 import java.util.Scanner;
 
-public class HelloWorld {
+public class GreetingApp {
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
@@ -10,12 +10,12 @@ public class HelloWorld {
 		String name = in.nextLine();
 		System.out.print("Из какого города? ");
 		String city = in.nextLine();
-		Address address = new Address(city);
 		in.close();
-		ImmutableHello iHello = new ImmutableHello(name, address);
-		Address newAddress = iHello.getAddress();
+
+		User user = new User(name, new Address(city));
+		Address newAddress = user.getAddress();
 		newAddress.setCity("Moscow");
-		System.out.println(iHello);
+		System.out.println("Hello, " + user + "!");
 	}
 
 }
