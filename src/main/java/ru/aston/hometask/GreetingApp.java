@@ -13,7 +13,7 @@ public class GreetingApp {
 		in.close();
 
 		User user = new User(name, new Address(city));
-		Address newAddress = user.getAddress();
+		IAddress newAddress = user.getAddress();
 		newAddress.setCity("Moscow");
 		System.out.println("Hello, " + user + "!");
 	}
