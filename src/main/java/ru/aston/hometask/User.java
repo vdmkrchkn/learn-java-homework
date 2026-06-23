@@ -2,9 +2,9 @@ package ru.aston.hometask;
 
 public final class User {
 	private final String name;
-	private final Address address;
+	private final IAddress address;
 	
-	public User(String name, Address address) {
+	public User(String name, IAddress address) {
 		this.name = name;
 		this.address = address.clone();
 	}
@@ -13,7 +13,7 @@ public final class User {
 		return name;
 	}
 	
-	Address getAddress() {
+	IAddress getAddress() {
 		return address.clone();
 	}
 

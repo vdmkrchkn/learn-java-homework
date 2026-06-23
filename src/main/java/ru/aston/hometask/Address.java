@@ -1,6 +1,6 @@
 package ru.aston.hometask;
 
-public class Address implements Cloneable {
+public class Address implements IAddress {
 	private String city;
 	
 	public Address(String city) {
@@ -8,7 +8,7 @@ public class Address implements Cloneable {
 	}
 
 	@Override
-	protected Address clone() {
+	public Address clone() {
 		if (city == null) {
             try {
                 return (Address)super.clone();
