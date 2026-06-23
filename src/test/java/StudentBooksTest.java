@@ -29,12 +29,12 @@ public class StudentBooksTest {
     @Test
     void studentHasBookPublishedAt21stCentury() {
         List<Student> students = List.of(
-            new Student("Иванов Иван Иванович", List.of(
-                new Book("Java 2 Том 1 Основы", List.of("Хорстманн", "Корнелл"), 816, 2010),
-                new Book("Приёмы ООП, паттерны проектирования", List.of("Гамма", "Хелм", "Джонсон", "Влиссидес"),
-                        368, 2018),
-                new Book("Конкурентность в C#", List.of("Клири"), 272, 2020))),
-            new Student("Петров Петр Петрович", List.of(
+                new Student("Иванов Иван Иванович", List.of(
+                        new Book("Java 2 Том 1 Основы", List.of("Хорстманн", "Корнелл"), 816, 2010),
+                        new Book("Приёмы ООП, паттерны проектирования", List.of("Гамма", "Хелм", "Джонсон", "Влиссидес"),
+                                368, 2018),
+                        new Book("Конкурентность в C#", List.of("Клири"), 272, 2020))),
+                new Student("Петров Петр Петрович", List.of(
                         new Book("Руслан и Людмила", List.of("Пушкин"), 100, 1820))));
 
         assertEquals(2020, getStudentBookPublishYear(students).orElse(null));
