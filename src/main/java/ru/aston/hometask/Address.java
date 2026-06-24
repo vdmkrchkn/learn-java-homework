@@ -1,5 +1,3 @@
-package ru.aston.hometask;
-
 public class Address implements IAddress {
 	private String city;
 	

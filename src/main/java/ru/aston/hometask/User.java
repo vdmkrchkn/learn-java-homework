@@ -1,5 +1,3 @@
-package ru.aston.hometask;
-
 public final class User {
 	private final String name;
 	private final IAddress address;

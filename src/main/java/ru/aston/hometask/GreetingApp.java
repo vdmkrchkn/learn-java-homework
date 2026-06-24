@@ -1,5 +1,3 @@
-package ru.aston.hometask;
-
 import java.util.Scanner;
 
 public class GreetingApp {
