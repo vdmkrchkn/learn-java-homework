@@ -1,27 +1,27 @@
+package ru.aston.hometask3;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public final class User {
     private final String name;
-    private final IAddress address;
     private final String email;
     private final String password;
 
-    public User(String name, IAddress address, String email) {
+    @JsonCreator
+    public User(@JsonProperty("name") String name, @JsonProperty("email") String email) {
         this.name = name;
-        this.address = address.clone();
         this.email = email;
-        this.password = name + ":" + address.getCity() + ":" + email;
+        this.password = name + ":" + email;
     }
 
     String getName() {
         return name;
     }
 
-    IAddress getAddress() {
-        return address.clone();
-    }
-
     @Override
     public String toString() {
-        return getName() + " from " + address.getCity() + "with email " + getEmail() + "has a password=" + getPassword();
+        return getName() + "with an email: " + getEmail() + "has a password=" + getPassword();
     }
 
     public String getEmail() {

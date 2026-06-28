@@ -10,7 +10,7 @@ public class GreetingApp {
 		String city = in.nextLine();
 		in.close();
 
-		User user = new User(name, new Address(city));
+		User user = new User(name, new Address(city), "email@email.com");
 		IAddress newAddress = user.getAddress();
 		newAddress.setCity("Moscow");
 		System.out.println("Hello, " + user + "!");
