@@ -5,8 +5,8 @@ import java.util.Collection;
 public class CollectionGeneratorClient<T> {
     private final BaseCollectionGenerator<T> generator;
 
-    public CollectionGeneratorClient(BaseCollectionGenerator<T> placeholder) {
-        this.generator = placeholder;
+    public CollectionGeneratorClient(BaseCollectionGenerator<T> generator) {
+        this.generator = generator;
     }
 
     public Collection<T> get() {
