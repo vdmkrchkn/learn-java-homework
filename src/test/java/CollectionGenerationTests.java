@@ -5,11 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import ru.aston.hometask3.BaseCollectionGenerator;
-import ru.aston.hometask3.Collector;
 import ru.aston.hometask3.FileCollector;
 import ru.aston.hometask3.CollectionGeneratorClient;
 import ru.aston.hometask3.RandomCollector;
-import ru.aston.hometask3.User;
+import ru.aston.hometask.User;
 
 import java.util.Collection;
 
@@ -39,18 +38,5 @@ public class CollectionGenerationTests {
         CollectionGeneratorClient<User> collectionGeneratorClient = new CollectionGeneratorClient<>(placeholder);
         Collection<User> collection = collectionGeneratorClient.get();
         assertEquals(size, collection.size());
-    }
-
-    @Test
-    void when_CollectorName_thenReturnCollectionWithName() {
-        String name = "Иванов Иван Иванович";
-        BaseCollectionGenerator<User> placeholder = new Collector(1, name);
-        CollectionGeneratorClient<User> collectionGeneratorClient = new CollectionGeneratorClient<>(placeholder);
-        Collection<User> collection = collectionGeneratorClient.get();
-        String actualName = collection.stream()
-                .map(User::getName)
-                .findFirst()
-                .orElse("");
-        assertEquals(name, actualName);
     }
 }

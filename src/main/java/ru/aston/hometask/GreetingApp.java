@@ -1,3 +1,5 @@
+package ru.aston.hometask;
+
 import java.util.Scanner;
 
 public class GreetingApp {
@@ -10,7 +12,7 @@ public class GreetingApp {
 		String city = in.nextLine();
 		in.close();
 
-		User user = new User(name, new Address(city), "email@email.com");
+		User user = new User.Builder(name).setAddress(new Address(city)).build();
 		IAddress newAddress = user.getAddress();
 		newAddress.setCity("Moscow");
 		System.out.println("Hello, " + user + "!");
