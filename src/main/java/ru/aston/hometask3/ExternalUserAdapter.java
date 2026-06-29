@@ -11,12 +11,16 @@ public class ExternalUserAdapter implements IUser {
     }
 
     @Override
-    public String getRole() {
+    public UserRole getRole() {
         return externalUser.getUserRole();
     }
 
     @Override
-    public Collection<String> getPermissions() {
-        return Arrays.stream(externalUser.getPermissions().split(",")).toList();
+    public Collection<UserPermission> getPermissions() {
+        return Arrays.stream(externalUser.getPermissions().split(",")).map(s -> switch (s) {
+            case "Read" -> UserPermission.READ;
+            case "Write" -> UserPermission.WRITE;
+            default -> null;
+        }).toList();
     }
 }

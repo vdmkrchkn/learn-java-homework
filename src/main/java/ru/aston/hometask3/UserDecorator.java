@@ -12,11 +12,11 @@ public abstract class UserDecorator implements IUser {
         this.user = user;
     }
 
-    public String getRole() {
-        return "User";
+    public UserRole getRole() {
+        return UserRole.USER;
     }
 
-    public Collection<String> getPermissions() {
-        return List.of("Read");
+    public Collection<UserPermission> getPermissions() {
+        return List.of(UserPermission.READ);
     }
 }

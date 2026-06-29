@@ -11,14 +11,14 @@ public class AdminUser extends UserDecorator {
     }
 
     @Override
-    public String getRole() {
-        return "Admin";
+    public UserRole getRole() {
+        return UserRole.ADMIN;
     }
 
     @Override
-    public Collection<String> getPermissions() {
-        Collection<String> permissions = new HashSet<>(super.getPermissions());
-        permissions.add("Write");
+    public Collection<UserPermission> getPermissions() {
+        Collection<UserPermission> permissions = new HashSet<>(super.getPermissions());
+        permissions.add(UserPermission.WRITE);
         return permissions;
     }
 }

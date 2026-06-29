@@ -3,12 +3,12 @@ package ru.aston.hometask3;
 public class ExternalUser implements IExternalUser {
 
     @Override
-    public String getUserRole() {
-        return "User";
+    public UserRole getUserRole() {
+        return UserRole.USER;
     }
 
     @Override
     public String getPermissions() {
-        return "Read,Download,Upload";
+        return "Read,Write,Upload";
     }
 }

@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.aston.hometask.Address;
 import ru.aston.hometask.IAddress;
@@ -7,7 +8,10 @@ import ru.aston.hometask3.ExternalUser;
 import ru.aston.hometask3.ExternalUserAdapter;
 import ru.aston.hometask3.IExternalUser;
 import ru.aston.hometask3.IUser;
+import ru.aston.hometask3.SecureUserProxy;
 import ru.aston.hometask3.UserDecorator;
+import ru.aston.hometask3.UserPermission;
+import ru.aston.hometask3.UserRole;
 
 import java.util.Collection;
 import java.util.List;
@@ -16,10 +20,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UserTests {
+    static User.Builder userBuilder;
+    @BeforeAll
+    static void setupUser() {
+        userBuilder = new User.Builder("name");
+    }
     @Test
     void when_createUserAddressAndModify_thenReturnUnChangedCity(){
         String city = "city";
-        User user = new User.Builder("name").setAddress(new Address(city)).build();
+        User user = userBuilder.setAddress(new Address(city)).build();
         IAddress newAddress = user.getAddress();
         newAddress.setCity("Moscow");
         assertEquals(city, user.getAddress().getCity());
@@ -27,24 +36,32 @@ public class UserTests {
 
     @Test
     void when_grantUserToAdmin_thenReturnAdminRole() {
-        User user = new User.Builder("name").build();
+        User user = userBuilder.build();
         UserDecorator adminUser = new AdminUser(user);
-        assertEquals("Admin", adminUser.getRole());
+        assertEquals(UserRole.ADMIN, adminUser.getRole());
     }
 
     @Test
     void when_grantUserToAdmin_thenReturnAdminPermissions() {
-        User user = new User.Builder("name").build();
+        User user = userBuilder.build();
         UserDecorator adminUser = new AdminUser(user);
-        Collection<String> permissions = adminUser.getPermissions();
-        assertTrue(permissions.containsAll(List.of("Read", "Write")));
+        Collection<UserPermission> permissions = adminUser.getPermissions();
+        assertTrue(permissions.containsAll(List.of(UserPermission.READ, UserPermission.WRITE)));
     }
 
     @Test
     void when_externalUserProvidePermissions_thenReturnUserPermissions() {
         IExternalUser externalUser = new ExternalUser();
         IUser user = new ExternalUserAdapter(externalUser);
-        Collection<String> permissions = user.getPermissions();
-        assertTrue(permissions.containsAll(List.of("Read", "Download", "Upload")));
+        Collection<UserPermission> permissions = user.getPermissions();
+        assertTrue(permissions.containsAll(List.of(UserPermission.READ, UserPermission.WRITE)));
+    }
+
+    @Test
+    void when_AdminUser_thenReturnPermissions() {
+        User user = userBuilder.build();
+        IUser userProxy = new SecureUserProxy(user, UserRole.ADMIN);
+        Collection<UserPermission> permissions = userProxy.getPermissions();
+        assertTrue(permissions.containsAll(List.of(UserPermission.READ, UserPermission.WRITE)));
     }
 }
