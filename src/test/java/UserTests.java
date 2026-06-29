@@ -3,6 +3,10 @@ import ru.aston.hometask.Address;
 import ru.aston.hometask.IAddress;
 import ru.aston.hometask.User;
 import ru.aston.hometask3.AdminUser;
+import ru.aston.hometask3.ExternalUser;
+import ru.aston.hometask3.ExternalUserAdapter;
+import ru.aston.hometask3.IExternalUser;
+import ru.aston.hometask3.IUser;
 import ru.aston.hometask3.UserDecorator;
 
 import java.util.Collection;
@@ -34,5 +38,13 @@ public class UserTests {
         UserDecorator adminUser = new AdminUser(user);
         Collection<String> permissions = adminUser.getPermissions();
         assertTrue(permissions.containsAll(List.of("Read", "Write")));
+    }
+
+    @Test
+    void when_externalUserProvidePermissions_thenReturnUserPermissions() {
+        IExternalUser externalUser = new ExternalUser();
+        IUser user = new ExternalUserAdapter(externalUser);
+        Collection<String> permissions = user.getPermissions();
+        assertTrue(permissions.containsAll(List.of("Read", "Download", "Upload")));
     }
 }

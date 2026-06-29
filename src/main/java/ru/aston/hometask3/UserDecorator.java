@@ -5,7 +5,7 @@ import ru.aston.hometask.User;
 import java.util.Collection;
 import java.util.List;
 
-public abstract class UserDecorator {
+public abstract class UserDecorator implements IUser {
     protected User user;
 
     public UserDecorator(User user) {
