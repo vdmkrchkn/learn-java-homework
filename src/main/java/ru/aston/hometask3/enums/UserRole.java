@@ -1,4 +1,4 @@
-package ru.aston.hometask3;
+package ru.aston.hometask3.enums;
 
 public enum UserRole {
     USER,

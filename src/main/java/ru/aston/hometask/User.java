@@ -38,6 +38,10 @@ public class User {
         return getName() + " from " + address.getCity() + " with an email: " + email + " has a password=" + password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public static class Builder {
         private final String name;
         private String email;

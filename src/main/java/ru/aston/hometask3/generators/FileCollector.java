@@ -1,4 +1,4 @@
-package ru.aston.hometask3;
+package ru.aston.hometask3.generators;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

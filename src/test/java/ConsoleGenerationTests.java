@@ -6,8 +6,8 @@ import java.util.Collection;
 import java.util.List;
 
 import ru.aston.hometask.User;
-import ru.aston.hometask3.BaseCollectionGenerator;
-import ru.aston.hometask3.CollectionGeneratorClient;
+import ru.aston.hometask3.generators.BaseCollectionGenerator;
+import ru.aston.hometask3.generators.CollectionGeneratorClient;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -1,4 +1,4 @@
-package ru.aston.hometask3;
+package ru.aston.hometask3.generators;
 
 import java.util.Collection;
 

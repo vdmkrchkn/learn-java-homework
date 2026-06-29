@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-import ru.aston.hometask3.BaseCollectionGenerator;
-import ru.aston.hometask3.FileCollector;
-import ru.aston.hometask3.CollectionGeneratorClient;
-import ru.aston.hometask3.RandomCollector;
+import ru.aston.hometask3.generators.BaseCollectionGenerator;
+import ru.aston.hometask3.generators.FileCollector;
+import ru.aston.hometask3.generators.CollectionGeneratorClient;
+import ru.aston.hometask3.generators.RandomCollector;
 import ru.aston.hometask.User;
 
 import java.util.Collection;
