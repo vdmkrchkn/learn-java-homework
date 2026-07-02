@@ -1,4 +1,4 @@
-package ru.aston.hometask;
+package ru.aston.models;
 
 public interface IAddress extends Cloneable {
     String getCity();

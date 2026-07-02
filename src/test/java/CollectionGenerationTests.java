@@ -8,7 +8,7 @@ import ru.aston.hometask3.generators.BaseCollectionGenerator;
 import ru.aston.hometask3.generators.FileCollector;
 import ru.aston.hometask3.generators.CollectionGeneratorClient;
 import ru.aston.hometask3.generators.RandomCollector;
-import ru.aston.hometask.User;
+import ru.aston.models.User;
 
 import java.util.Collection;
 

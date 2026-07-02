@@ -9,7 +9,11 @@ public class CollectionGeneratorClient<T> {
         this.generator = generator;
     }
 
-    public Collection<T> get() {
-        return generator.generate();
+    public Collection<T> get() throws NullPointerException {
+        if (generator != null) {
+            return generator.generate();
+        }
+
+        throw new NullPointerException("Не задан генератор коллекции");
     }
 }

@@ -7,23 +7,23 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public class ExternalUserAdapter implements IUser {
-    private final IExternalUser externalUser;
-
-    public ExternalUserAdapter(IExternalUser externalUser) {
-        this.externalUser = externalUser;
-    }
-
     @Override
     public UserRole getRole() {
-        return externalUser.getUserRole();
+        return ExternalUser.getUserRole();
     }
 
     @Override
     public Collection<UserPermission> getPermissions() {
-        return Arrays.stream(externalUser.getPermissions().split(",")).map(s -> switch (s) {
-            case "Read" -> UserPermission.READ;
-            case "Write" -> UserPermission.WRITE;
-            default -> null;
-        }).toList();
+        return Arrays.stream(ExternalUser.getPermissions().split(",")).map(UserPermission::valueOf).toList();
+    }
+
+    static class ExternalUser {
+        public static UserRole getUserRole() {
+            return UserRole.USER;
+        }
+
+        public static String getPermissions() {
+            return UserPermission.READ + "," + UserPermission.WRITE;
+        }
     }
 }

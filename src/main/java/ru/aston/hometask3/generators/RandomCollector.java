@@ -1,25 +1,26 @@
 package ru.aston.hometask3.generators;
 
-import ru.aston.hometask.User;
+import ru.aston.models.User;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RandomCollector extends BaseCollectionGenerator<User> {
-    protected final Integer size;
+    protected final int size;
 
-    public RandomCollector(Integer size) {
+    public RandomCollector(int size) {
         this.size = size;
     }
 
     @Override
-    Collection<User> generate() {
+    Collection<User> generate() throws NullPointerException {
         return IntStream.range(0, size).mapToObj(i -> {
             String name = "name" + (i + 1);
-            return new User.Builder(name)
-                    .setEmail(name + "@email.com")
-                    .setPassword()
+            return User.Builder.builder()
+                    .addName(name)
+                    .addEmail(name + "@email.com")
+                    .addPassword()
                     .build();
         }).collect(Collectors.toSet());
     }

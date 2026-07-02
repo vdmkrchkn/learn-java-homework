@@ -1,6 +1,6 @@
 package ru.aston.hometask3.validators;
 
-import ru.aston.hometask.User;
+import ru.aston.models.User;
 
 public abstract class UserValidationHandler {
     protected UserValidationHandler next;
@@ -9,9 +9,9 @@ public abstract class UserValidationHandler {
         this.next = next;
     }
 
-    public abstract void validate(User user) throws Exception;
+    public abstract void validate(User user) throws ValidationException;
 
-    protected void validateNext(User user) throws Exception {
+    protected void validateNext(User user) throws ValidationException {
         if (next != null) {
             next.validate(user);
         }
