@@ -1,3 +1,5 @@
+package ru.aston.hometask;
+
 public final class User {
 	private final String name;
 	private final IAddress address;
@@ -11,7 +13,7 @@ public final class User {
 		return name;
 	}
 	
-	IAddress getAddress() {
+	public IAddress getAddress() {
 		return address.clone();
 	}
 

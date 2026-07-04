@@ -1,4 +1,8 @@
 import org.junit.jupiter.api.Test;
+import ru.aston.hometask.Address;
+import ru.aston.hometask.IAddress;
+import ru.aston.hometask.User;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UserTests {
