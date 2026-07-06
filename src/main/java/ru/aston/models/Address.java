@@ -1,3 +1,5 @@
+package ru.aston.models;
+
 public class Address implements IAddress {
 	private String city;
 	
