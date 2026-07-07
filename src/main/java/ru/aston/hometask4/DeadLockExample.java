@@ -7,7 +7,7 @@ public class DeadLockExample {
     private static final Lock lock1 = new ReentrantLock(true);
     private static final Lock lock2 = new ReentrantLock(true);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Runnable process1 = () -> {
             lock1.lock();
             System.out.println("lock1 acquired. Waiting to acquire lock2");
@@ -39,5 +39,6 @@ public class DeadLockExample {
         };
 
         new Thread(process2).start();
+        Thread.currentThread().join();
     }
 }
