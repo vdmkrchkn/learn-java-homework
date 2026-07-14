@@ -8,6 +8,11 @@
 
 name: Java CI with Maven
 
+permissions:
+  contents: write       # Needed to push code, tags, or create releases
+  pull-requests: write  # Needed to comment on or manage PRs
+  issues: write 
+
 on:
   push:
     branches: [ "main" ]
