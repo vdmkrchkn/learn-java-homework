@@ -22,13 +22,17 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verifyNoInteractions;
 
 public class UserTests {
     static User.Builder userBuilder;
+
     @BeforeAll
     static void setupUser() {
         userBuilder = User.Builder.builder();
     }
+
     @Test
     void when_createUserAddressAndModify_thenReturnUnChangedCity(){
         String city = "city";
@@ -69,6 +73,32 @@ public class UserTests {
         Collection<UserPermission> permissions = userProxy.getPermissions();
         List<UserPermission> adminPermissions = List.of(UserPermission.READ, UserPermission.WRITE);
         assertTrue(permissions.containsAll(adminPermissions));
+    }
+
+    @Test
+    void validate_nullUsername_throwsNullPointerExceptionAndDoesNotDelegate() {
+        User user = userBuilder.build();
+        UserValidationHandler userNameValidator = new UsernameValidationHandler();
+        UserValidationHandler userEmailValidator = mock();
+
+        NullPointerException exception = assertThrows(
+                NullPointerException.class,
+                () -> userNameValidator.validate(user)
+        );
+        assertEquals("Имя пользователя не может быть null", exception.getMessage());
+        verifyNoInteractions(userEmailValidator);
+    }
+
+    @Test
+    void validate_nullEmail_throwsNullPointerException() {
+        User user = userBuilder.build();
+        UserValidationHandler userEmailValidator = new EmailValidationHandler();
+
+        NullPointerException exception = assertThrows(
+                NullPointerException.class,
+                () -> userEmailValidator.validate(user)
+        );
+        assertEquals("Email пользователя не может быть null", exception.getMessage());
     }
 
     @Test
