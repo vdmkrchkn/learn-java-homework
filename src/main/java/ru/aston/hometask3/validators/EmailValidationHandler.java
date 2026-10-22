@@ -2,10 +2,13 @@ package ru.aston.hometask3.validators;
 
 import ru.aston.models.User;
 
+import java.util.Objects;
+
 public class EmailValidationHandler extends UserValidationHandler {
     @Override
     public void validate(User user) throws ValidationException {
-        if (user.getEmail() == null || user.getEmail().trim().isEmpty()) {
+        Objects.requireNonNull(user.getEmail(), "Email пользователя не может быть null");
+        if (user.getEmail().trim().isEmpty()) {
             throw new ValidationException("Email cannot be empty");
         }
 
